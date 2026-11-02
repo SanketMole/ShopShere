@@ -1,0 +1,20 @@
+# Python
+__pycache__/
+*.py[cod]
+backend/venv/
+.venv/
+
+# Node.js
+frontend/node_modules/
+frontend/dist/
+
+# Generated database
+database/products.db
+
+# Environment variables
+.env
+
+# Editor and operating system files
+.vscode/
+.idea/
+.DS_Store
