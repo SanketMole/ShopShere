@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import "./App.css";
+import AdminDashboard from "./AdminDashboard";
+
 
 const API = "http://127.0.0.1:5000/api/products";
 
@@ -7,6 +9,7 @@ function App() {
   const [products, setProducts] = useState([]);
   const [selected, setSelected] = useState(null);
   const [search, setSearch] = useState("");
+  const [showAdmin, setShowAdmin] = useState(false);
   const [category, setCategory] = useState("");
   const [minPrice, setMinPrice] = useState("");
   const [maxPrice, setMaxPrice] = useState("");
@@ -81,6 +84,7 @@ function App() {
           href="#home"
           onClick={() => {
             setSelected(null);
+            setShowAdmin(false);
             resetFilters();
           }}
         >
@@ -88,11 +92,29 @@ function App() {
           ShopSphere
         </a>
 
-        <span className="nav-label">Simple shopping. Better choices.</span>
+        {/* <span className="nav-label">Simple shopping. Better choices.</span> */}
+        <div className="nav-right">
+          <span className="nav-label">
+            Simple shopping. Better choices.
+          </span>
+
+          <button
+            className="admin-nav-button"
+            onClick={() => {
+              setSelected(null);
+              setShowAdmin(true);
+            }}
+          >
+            Admin Dashboard
+          </button>
+        </div>
       </header>
 
       <main className="container" id="home">
-        {selected ? (
+        {/* {selected ? ( */}
+        {showAdmin ? (
+          <AdminDashboard />
+        ) : selected ? (
           <section className="details">
             <button
               className="back-button"
